@@ -1,11 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Tour in Taipei
+# Tour in Taipei Accupass version
 Small project for learning fetching API
 <br />
 API: 台北旅遊資訊 open API Attractions
 <br />
-[Click to see website](https://tourtaipei.netlify.com/)
 
 ## Running project
 In the project directory, you can run:
