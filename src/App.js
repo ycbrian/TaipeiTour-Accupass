@@ -10,21 +10,22 @@ import Navbar from "./component/Navbar";
 const App = () => {
   const [travelData, setTravelData] = useState([]);
 
-  useEffect(() => {
-    fetch(
+  async function fetchAttraction() {
+    const result = await fetch(
       "https://cors-anywhere.herokuapp.com/https://www.travel.taipei/open-api/zh-tw/Attractions/All",
       {
         headers: new Headers({
           accept: "application/json"
         })
       }
-    )
-      .then(response => {
-        // console.log(response);
-        return response.json();
-      })
+    );
+    const data = await result.json();
+    return data;
+  }
+
+  useEffect(() => {
+    fetchAttraction()
       .then(result => {
-        // console.log(result.data);
         setTravelData(dataHandle(result.data));
       })
       .catch(error => console.log(error));
