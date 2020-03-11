@@ -5,12 +5,13 @@ import { findData } from "../util/dataHandle";
 import styled from "styled-components";
 import defaultTP from "../image/defaultTP.jpg";
 import ImgGallery from "../component/ImgGallery";
+import { FaHeart } from "react-icons/fa";
 
 const Attraction = props => {
   const { id } = useParams();
   const { travelData } = props;
-
   let page, image;
+
   if (travelData.length) {
     const data = findData(id, travelData);
     if (!data) page = <Redirect to="/" />;
@@ -21,6 +22,7 @@ const Attraction = props => {
       page = (
         <>
           <div className="attr-headImage" />
+          <FaHeart className="attr-like" />
           <div className="attr-textGroup">
             <p className="attr-name">{name}</p>
             <p
@@ -144,6 +146,15 @@ const StyledAttr = styled.div`
       padding: 0 1rem;
       color: rgb(35, 137, 218);
       margin-bottom: 4rem;
+    }
+
+    &like {
+      width: 3.5rem;
+      height: 3.5rem;
+      color: ${props => (props.like ? "red" : "#a2a2a2")};
+      position: absolute;
+      top: 82vh;
+      left: 70vw;
     }
 
     &button {

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import headImg from "../image/taipeicity.jpg";
 import Card from "../component/Card";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Home = props => {
   const data = props.travelData;
@@ -21,7 +22,13 @@ const Home = props => {
       const { id, name, address, images } = item;
       return (
         <Link key={id} to={`/${id}`} className="card-link">
-          <Card name={name} address={address} images={images[0]} />
+          <Card
+            name={name}
+            address={address}
+            images={images[0]}
+            likeToggle={props.onLikeToggle}
+            likeArr={props.likeArr}
+          />
         </Link>
       );
     });
@@ -34,6 +41,18 @@ const Home = props => {
       {page}
     </StyledHome>
   );
+};
+
+const mapStateToProps = state => {
+  return {
+    likeArr: state.likeArr
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLikeToggle: id => dispatch({ type: "LIKE", likeID: id })
+  };
 };
 
 const StyledHome = styled.main`
@@ -73,4 +92,4 @@ const StyledHome = styled.main`
   }
 `;
 
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

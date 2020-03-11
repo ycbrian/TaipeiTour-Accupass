@@ -1,14 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import defaultTP from "../image/defaultTP.jpg";
+import { FaHeart } from "react-icons/fa";
 
 const Card = props => {
-  const { name, address, images } = props;
+  const { name, address, images, likeToggle, likeArr } = props;
   let src;
+  let like = likeArr.find(item => item === name);
+
   if (images) src = images.src;
 
   return (
-    <StyledCard src={src}>
+    <StyledCard src={src} like={like}>
       <div className="card-image" />
       <div className="card-text">
         {name} --- {address}
@@ -17,6 +20,14 @@ const Card = props => {
           <div className="card-like">242人喜歡</div>
         </div>
       </div>
+
+      <FaHeart
+        className="card-heart"
+        onClick={event => {
+          event.stopPropagation();
+          return likeToggle(name);
+        }}
+      />
     </StyledCard>
   );
 };
@@ -24,6 +35,7 @@ const Card = props => {
 const StyledCard = styled.div`
   width: 29.4rem;
   height: 22.1rem;
+  position: relative;
   line-height: 2.4rem;
   letter-spacing: -0.32px;
   color: rgba(0, 0, 0, 0.85);
@@ -62,6 +74,15 @@ const StyledCard = styled.div`
 
     &like {
       font-size: 1.5rem;
+    }
+
+    &heart {
+      width: 2.5rem;
+      height: 2.5rem;
+      position: absolute;
+      color: ${props => (props.like ? "red" : "grey")};
+      top: 2rem;
+      right: 2rem;
     }
   }
 `;
