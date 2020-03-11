@@ -6,17 +6,19 @@ import styled from "styled-components";
 import defaultTP from "../image/defaultTP.jpg";
 import ImgGallery from "../component/ImgGallery";
 import { FaHeart } from "react-icons/fa";
+import { connect } from "react-redux";
 
 const Attraction = props => {
   const { id } = useParams();
-  const { travelData } = props;
-  let page, image;
+  const { travelData, likeArr } = props;
+  let page, image, like;
 
   if (travelData.length) {
     const data = findData(id, travelData);
     if (!data) page = <Redirect to="/" />;
     else {
       const { name, introduction, address, tel, ticket, url, images } = data;
+      like = likeArr.find(item => item === name);
 
       image = images.length > 0 ? images[0].src : defaultTP;
       page = (
@@ -86,7 +88,17 @@ const Attraction = props => {
     );
   }
 
-  return <StyledAttr img={image}>{page}</StyledAttr>;
+  return (
+    <StyledAttr img={image} like={like}>
+      {page}
+    </StyledAttr>
+  );
+};
+
+const mapStateToProps = state => {
+  return {
+    likeArr: state.likeArr
+  };
 };
 
 const StyledAttr = styled.div`
@@ -178,4 +190,4 @@ const StyledAttr = styled.div`
   }
 `;
 
-export default Attraction;
+export default connect(mapStateToProps)(Attraction);

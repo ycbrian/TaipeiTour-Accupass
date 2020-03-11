@@ -21,13 +21,7 @@ const Card = props => {
         </div>
       </div>
 
-      <FaHeart
-        className="card-heart"
-        onClick={event => {
-          event.stopPropagation();
-          return likeToggle(name);
-        }}
-      />
+      <FaHeart className="card-heart" onClick={() => likeToggle(name)} />
     </StyledCard>
   );
 };
@@ -80,7 +74,7 @@ const StyledCard = styled.div`
       width: 2.5rem;
       height: 2.5rem;
       position: absolute;
-      color: ${props => (props.like ? "red" : "grey")};
+      color: ${props => (props.like ? "red" : "#a2a2a2")};
       top: 2rem;
       right: 2rem;
     }
