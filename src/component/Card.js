@@ -1,27 +1,36 @@
 import React from "react";
 import styled from "styled-components";
 import defaultTP from "../image/defaultTP.jpg";
+import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 
 const Card = props => {
-  const { name, address, images, likeToggle, likeArr } = props;
+  const { name, id, address, images, likeToggle, likeArr } = props;
+
   let src;
   let like = likeArr.find(item => item === name);
 
   if (images) src = images.src;
 
+  const handleToggle = name => e => {
+    e.stopPropagation();
+    likeToggle(name);
+  };
+
   return (
     <StyledCard src={src} like={like}>
-      <div className="card-image" />
-      <div className="card-text">
-        {name} --- {address}
-        <div className="card-tag">
-          <div className="card-place">台北</div>
-          <div className="card-like">242人喜歡</div>
+      <Link to={`/${id}`} className="card-link">
+        <div className="card-image" />
+        <div className="card-text">
+          {name} --- {address}
+          <div className="card-tag">
+            <div className="card-place">台北</div>
+            <div className="card-like">242人喜歡</div>
+          </div>
         </div>
-      </div>
+      </Link>
 
-      <FaHeart className="card-heart" onClick={() => likeToggle(name)} />
+      <FaHeart className="card-heart" onClick={handleToggle(name)} />
     </StyledCard>
   );
 };
@@ -77,6 +86,11 @@ const StyledCard = styled.div`
       color: ${props => (props.like ? "red" : "#a2a2a2")};
       top: 2rem;
       right: 2rem;
+    }
+
+    &link {
+      text-decoration: none;
+      color: var(--color-secondary-dark);
     }
   }
 `;

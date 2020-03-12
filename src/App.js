@@ -6,9 +6,11 @@ import Attraction from "./page/Attraction";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { dataHandle } from "./util/dataHandle";
 import Navbar from "./component/Navbar";
+import { connect } from "react-redux";
 
-const App = () => {
+const App = props => {
   const [travelData, setTravelData] = useState([]);
+  const { likeArr, onLikeToggle } = props;
 
   async function fetchAttraction() {
     const result = await fetch(
@@ -36,10 +38,18 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route path="/" exact>
-          <Home travelData={travelData} />
+          <Home
+            travelData={travelData}
+            likeArr={likeArr}
+            likeToggle={onLikeToggle}
+          />
         </Route>
         <Route path="/:id" exact>
-          <Attraction travelData={travelData} />
+          <Attraction
+            travelData={travelData}
+            likeArr={likeArr}
+            likeToggle={onLikeToggle}
+          />
         </Route>
         <Redirect to="/" exact />
       </Switch>
@@ -48,4 +58,16 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    likeArr: state.likeArr
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLikeToggle: id => dispatch({ type: "LIKE", likeID: id })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

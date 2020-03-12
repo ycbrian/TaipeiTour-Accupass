@@ -8,7 +8,7 @@ const reducer = (state = initialState, action) => {
     if (!likeItem) {
       state.likeArr.push(action.likeID);
       return {
-        likeArr: state.likeArr
+        likeArr: [...state.likeArr]
       };
     } else {
       const newArr = state.likeArr.filter(item => item !== action.likeID);

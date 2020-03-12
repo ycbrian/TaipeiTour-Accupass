@@ -6,11 +6,10 @@ import styled from "styled-components";
 import defaultTP from "../image/defaultTP.jpg";
 import ImgGallery from "../component/ImgGallery";
 import { FaHeart } from "react-icons/fa";
-import { connect } from "react-redux";
 
 const Attraction = props => {
   const { id } = useParams();
-  const { travelData, likeArr } = props;
+  const { travelData, likeArr, likeToggle } = props;
   let page, image, like;
 
   if (travelData.length) {
@@ -24,7 +23,7 @@ const Attraction = props => {
       page = (
         <>
           <div className="attr-headImage" />
-          <FaHeart className="attr-like" />
+          <FaHeart className="attr-like" onClick={() => likeToggle(name)} />
           <div className="attr-textGroup">
             <p className="attr-name">{name}</p>
             <p
@@ -93,12 +92,6 @@ const Attraction = props => {
       {page}
     </StyledAttr>
   );
-};
-
-const mapStateToProps = state => {
-  return {
-    likeArr: state.likeArr
-  };
 };
 
 const StyledAttr = styled.div`
@@ -190,4 +183,4 @@ const StyledAttr = styled.div`
   }
 `;
 
-export default connect(mapStateToProps)(Attraction);
+export default Attraction;

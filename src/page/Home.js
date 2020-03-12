@@ -2,11 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import headImg from "../image/taipeicity.jpg";
 import Card from "../component/Card";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 
 const Home = props => {
   const data = props.travelData;
+  const { likeArr, likeToggle } = props;
 
   let page = (
     <div className="loader-box">
@@ -21,15 +20,15 @@ const Home = props => {
     let dataArr = data.map(item => {
       const { id, name, address, images } = item;
       return (
-        <Link key={id} to={`/${id}`} className="card-link">
-          <Card
-            name={name}
-            address={address}
-            images={images[0]}
-            likeToggle={props.onLikeToggle}
-            likeArr={props.likeArr}
-          />
-        </Link>
+        <Card
+          name={name}
+          address={address}
+          images={images[0]}
+          likeToggle={likeToggle}
+          likeArr={likeArr}
+          id={id}
+          key={id}
+        />
       );
     });
     page = <section className="home-cardGroup">{dataArr}</section>;
@@ -41,18 +40,6 @@ const Home = props => {
       {page}
     </StyledHome>
   );
-};
-
-const mapStateToProps = state => {
-  return {
-    likeArr: state.likeArr
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onLikeToggle: id => dispatch({ type: "LIKE", likeID: id })
-  };
 };
 
 const StyledHome = styled.main`
@@ -87,9 +74,6 @@ const StyledHome = styled.main`
       background-color: white;
     }
   }
-  .card-link {
-    text-decoration: none;
-  }
 `;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
