@@ -1,10 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Link, Redirect } from "react-router-dom";
-import { findData } from "../util/dataHandle";
+import { findData } from "../../util/dataHandle";
 import styled from "styled-components";
-import defaultTP from "../image/defaultTP.jpg";
-import ImgGallery from "../component/ImgGallery";
+import defaultTP from "../../image/defaultTP.jpg";
+import ImgGallery from "../../component/ImgGallery";
 import { FaHeart } from "react-icons/fa";
 
 const Attraction = props => {

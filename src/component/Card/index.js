@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import defaultTP from "../image/defaultTP.jpg";
+import defaultTP from "../../image/defaultTP.jpg";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 

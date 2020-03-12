@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import headImg from "../image/taipeicity.jpg";
-import Card from "../component/Card";
+import headImg from "../../image/taipeicity.jpg";
+import Card from "../../component/Card";
 
 const Home = props => {
   const data = props.travelData;

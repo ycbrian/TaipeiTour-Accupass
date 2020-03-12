@@ -1,6 +1,5 @@
 const initialState = {
-  likeArr: [],
-  starArr: []
+  likeArr: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -8,7 +7,7 @@ const reducer = (state = initialState, action) => {
     const likeItem = state.likeArr.find(item => item == action.likeID);
     if (!likeItem) {
       return {
-        likeArr: [...state.likeArr, likeItem]
+        likeArr: [...state.likeArr, action.likeID]
       };
     } else {
       const newArr = state.likeArr.filter(item => item !== action.likeID);
