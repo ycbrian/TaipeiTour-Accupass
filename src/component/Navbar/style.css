@@ -1,0 +1,17 @@
+.nav--wrapper {
+  width: auto;
+  height: 50px;
+  background-color: #0088d2;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 300;
+}
+.nav--explore {
+  margin-left: -9rem;
+}
+.nav--holdAct {
+  margin-left: 30rem;
+}

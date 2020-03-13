@@ -1,0 +1,89 @@
+.attr--main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-secondary-dark);
+  background-color: white;
+}
+
+.attr--headImage {
+  margin-top: 8rem;
+  width: 70%;
+  height: 60vh;
+}
+.attr--textGroup {
+  font-size: 3.4rem;
+  padding: 5rem 7rem 5rem 7rem;
+  margin-bottom: 10rem;
+  width: 70%;
+  background-color: white;
+  letter-spacing: 1px;
+}
+.attr--posLabel {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+.attr--name {
+  letter-spacing: 2px;
+  font-size: 3.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+.attr--intro {
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+}
+.attr--address {
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+}
+.attr--tel {
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+}
+.attr--ticket {
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.attr--infoLink {
+  letter-spacing: 0px;
+  display: block;
+  text-decoration: none;
+  padding: 0 1rem;
+  color: rgb(35, 137, 218);
+  margin-bottom: 4rem;
+}
+
+.attr--like {
+  width: 3.5rem;
+  height: 3.5rem;
+  color: #a2a2a2;
+  position: absolute;
+  top: 82vh;
+  left: 70vw;
+}
+
+.attr--like-active {
+  color: red;
+}
+
+.attr--button {
+  background-color: var(--color-primary-dark);
+  font-size: 2rem;
+  letter-spacing: 2px;
+  font-weight: 500;
+  padding: 1.5rem;
+  border-radius: 2rem;
+  border: none;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  margin-left: 80%;
+  transition: all 0.12s ease-in;
+}
+.attr--button:hover {
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+}
